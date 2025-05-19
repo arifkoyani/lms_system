@@ -3,7 +3,6 @@ import path from "path";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
 import CustomError from "../utils/CustomError.js";
-
 const filePath = fileURLToPath(import.meta.url); // backend/src/middlewares/multer.middleware.js
 const __dirname = dirname(filePath); //backend/src/middlewares/
 const uploadPath = path.join(__dirname, "../../public/profiles");
@@ -12,8 +11,6 @@ const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, uploadPath);
   },
-  // logo.png
-  //278946238462834624-logo.png
   filename: (req, file, cb) => {
     cb(null, `${Date.now()}-${file.originalname}`);
   },
