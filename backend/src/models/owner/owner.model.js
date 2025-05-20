@@ -23,10 +23,10 @@ const ownerSchema = new Schema(
       type: Boolean,
       default: false,
     },
-    // profile: {
-    //   type: String,
-    //   required: false,
-    // },
+    profile: {
+      type: String,
+      required: false,
+    },
     isDeleted: {
       type: Boolean,
       default: false,
