@@ -10,18 +10,13 @@ const corsOptions = {
   origin: function (origin, cb) {
     if (whiteList.includes(origin) || !origin) {
       cb(null, true);
-    } else cb(new Error("not allow my cors"));
+    } else cb(new Error("Not Allow By Cors Middleware"));
   },
   credentials: true,
   allowedHeaders: ["Content-Type"],
   methods: ["GET", "POST", "PUT", "DELETE"],
 };
-// .
-// .
-// .
-// .
-// .
-// .
+//
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors(corsOptions));
