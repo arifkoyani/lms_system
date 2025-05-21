@@ -55,5 +55,14 @@ ownerSchema.pre("save", async function () {
   }
 });
 
+// compare password
+ownerSchema.methods.comparePassword = async function (password) {
+  try {
+    return await bcrypt.compare(password, this.password);
+  } catch (error) {
+    throw new CustomError("Password comparison failed", 500);
+  }
+};
+
 const Owner = mongoose.model("owner", ownerSchema);
 export default Owner;

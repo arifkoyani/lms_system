@@ -151,4 +151,40 @@ const imageUpload = AsyncHandler(async (req, res, next) => {
   });
 });
 
-export { registerOwner, imageUpload };
+// login user
+const login = AsyncHandler(async (req, res, next) => {
+  const { email, password } = req.body;
+  // check email and password
+  if (!email || !password) {
+    return next(new CustomError("EMAIL AND PASSWORD REQUIRED", 404));
+  }
+  // check email
+  const isEmailExist = await Owner.findOne({ email });
+  if (!isEmailExist) {
+    return next(new CustomError("Email not found", 404));
+  }
+  // check password
+  const isPasswordMathed = await isEmailExist.comparePassword(password);
+
+  if (!isPasswordMathed) {
+    return next(new CustomError("Email or password is incorrect ", 404));
+  }
+
+  // check user is verify or not
+  if (!isEmailExist.isVerify) {
+    return next(
+      new CustomError("Please verify your account first before login", 401)
+    );
+  }
+
+  // login user
+  res.json({
+    status: 1,
+    message: "Login successfully",
+    data: {
+      user: isEmailExist,
+    },
+  });
+});
+
+export { registerOwner, imageUpload, login };
