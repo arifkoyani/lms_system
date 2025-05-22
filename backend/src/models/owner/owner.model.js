@@ -1,5 +1,8 @@
 import mongoose, { Schema } from "mongoose";
 import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
+import dotenv from "dotenv";
+dotenv.config();
 const ownerSchema = new Schema(
   {
     fullName: {
@@ -62,6 +65,12 @@ ownerSchema.methods.comparePassword = async function (password) {
   } catch (error) {
     throw new CustomError("Password comparison failed", 500);
   }
+};
+
+ownerSchema.methods.generateToken = function () {
+  return jwt.sign({ id: this._id, email: this.email }, process.env.JWT_SECRET, {
+    expiresIn: process.env.JWT_EXPIRY,
+  });
 };
 
 const Owner = mongoose.model("owner", ownerSchema);

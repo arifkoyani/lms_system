@@ -103,7 +103,7 @@ const RegisterForm = () => {
           )}
         </div>
       </div>
-      <div className="flex-1 bg-red-400">
+      <div className="flex-1 bg-red-400 shadow-2xl">
         <img
           className="w-full h-full object-cover"
           src="https://img.freepik.com/free-photo/kids-classroom-taking-english-class_23-2149402667.jpg?uid=R81763851&ga=GA1.1.1431774858.1747201417&semt=ais_hybrid&w=740"
