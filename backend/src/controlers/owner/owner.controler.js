@@ -8,6 +8,8 @@ import generateOTP from "../../utils/generateOtp.js";
 import sendEmail from "../../utils/sendEmail.js";
 import uploadImage from "../../utils/cloudinary.js";
 import chalk from "chalk";
+import jwt from "jsonwebtoken";
+import generateRefreshToken from "../../utils/generateRefreshToken.js";
 
 // const registerOwner =async function(req,res,next){
 //     throw new CustomError("this is my cutom error" , 404 , {data:null})
@@ -184,6 +186,37 @@ const login = AsyncHandler(async (req, res, next) => {
   if (!token) {
     return next(new CustomError("Token not generated", 500));
   }
+  // .
+  // .
+  // .
+  // .
+  // .
+  // .
+
+  const refreshToken = generateRefreshToken({
+    id: isEmailExist._id,
+    email: isEmailExist.email,
+  });
+  if (!refreshToken) {
+    return next(new CustomError("Failed to genrate refresh token ", 400));
+  }
+
+  console.log(chalk.red.bold("REFRESHTOKEN", refreshToken));
+  // store refresh token in db
+  try {
+    await Owner.findOneAndUpdate({ id: isEmailExist._id }, { refreshToken });
+  } catch (error) {
+    return next(new CustomError("Fail to store refresh token in db", 401));
+  }
+
+  //  set refresh token in cookies
+  res.cookie("refresh", refreshToken, {
+    httpOnly: true,
+    secure: true,
+    sameSite: "none",
+    path: "/",
+    expires: new Date(Date.now() + 15 * 24 * 60 * 60 * 1000), //15 days
+  });
 
   res.cookie("token", token, {
     httpOnly: true,
@@ -199,8 +232,54 @@ const login = AsyncHandler(async (req, res, next) => {
     data: {
       user: isEmailExist,
     },
+    accessToken: token,
   });
 });
 
-export { registerOwner, imageUpload, login };
+const refresh = AsyncHandler(async (req, res, next) => {
+  // get refresh token
+  const refreshToken = req.cookies.refresh;
+  console.log(
+    chalk.black.bold.bgWhite("REFRESH TOKEN GET FROM COOKIES ", refreshToken)
+  );
+  if (!refreshToken) {
+    return next(new CustomError("Refresh Token not found ", 404));
+  }
+
+  // check refresh token
+  console.log(process.env.REFRESH_TOKEN_SECRET, "ENV VARIBALE ");
+  const decodeUserData = jwt.verify(
+    refreshToken,
+    process.env.REFRESH_TOKEN_SECRET
+  );
+  console.log(chalk.black.bold.bgWhite("Decoded data", decodeUserData));
+  if (!decodeUserData) {
+    return next(new CustomError("Invalid refresh token ", 401));
+  }
+  // check refresh token store is avaliable in db
+
+  const isValidRefreshToken = await Owner.findOne({
+    email: decodeUserData.email,
+  });
+  if (!isValidRefreshToken) {
+    return next(new CustomError("Invalid refresh token ", 401));
+  }
+
+  // generate new access token
+  const newAccessToken = isValidRefreshToken.generateToken();
+
+  if (!newAccessToken) {
+    return next(new CustomError("failed to refresh access token ", 400));
+  }
+
+  console.log(chalk.black.bold.bgWhite("New accesstoken", newAccessToken));
+
+  res.json({
+    message: "Token refreesh successfully ..",
+    status: 1,
+    accessToken: newAccessToken,
+  });
+});
+
+export { registerOwner, imageUpload, login, refresh };
 // all export to git
