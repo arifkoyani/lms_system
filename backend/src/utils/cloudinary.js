@@ -30,3 +30,5 @@ async function uploadImage(localFilePath) {
 }
 
 export default uploadImage;
+
+// thi is cloudinary config file through which we can use it in our project
