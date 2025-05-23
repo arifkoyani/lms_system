@@ -7,8 +7,6 @@ function generateOTP() {
     specialChars: false,
     digits: true,
   });
-
-  // 928344
 }
 
 export default generateOTP;
