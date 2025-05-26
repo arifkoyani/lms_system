@@ -19,7 +19,7 @@ export default function Login() {
     if (res.ok) {
       alert("Login successful");
     } else {
-      alert("Something went wrong");
+      alert("Something went wrong here");
     }
   };
 
