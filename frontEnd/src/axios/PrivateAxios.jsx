@@ -9,7 +9,7 @@ function PrivateAxios() {
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json",
-      Authorization: `Bearer ${auth.accessToken}`,
+      Authorization: `Bearer ${auth.accessToken || ""}`,
     },
   });
 }
