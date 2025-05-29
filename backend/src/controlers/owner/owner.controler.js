@@ -281,5 +281,36 @@ const refresh = AsyncHandler(async (req, res, next) => {
   });
 });
 
+const logout = AsyncHandler(async (req, res, next) => {
+  const user = req?.user;
+  if (!user) {
+    return next(new CustomError("User not found", 404));
+  }
+
+  //  search user in database
+  const isUserExist = await Owner.findOne({ email: user.email });
+
+  if (!isUserExist) {
+    return next(new CustomError("User not found", 404));
+  }
+
+  //  null refresh token field in db
+  isUserExist.refreshToken = null;
+  await isUserExist.save();
+
+  // clear cookies
+  res.clearCookie("refresh", {
+    httpOnly: true,
+    secure: true,
+    sameSite: "none",
+    path: "/",
+    expires: new Date(Date.now()),
+  });
+  res.json({
+    message: "Logout successfully",
+    status: 1,
+  });
+});
+
 export { registerOwner, imageUpload, login, refresh };
 // all export to git
