@@ -30,7 +30,7 @@ import jwt from "jsonwebtoken";
 function verifyToken(req, res, next) {
   const bearerToken = req.headers.authorization;
   console.log(req.headers, "HEADERSSSS");
-  console.log("TOKEN FROM HEADER", bearerToken);
+  console.log("TOKEN FROM HEADER IS This", bearerToken);
   if (!bearerToken) {
     return next(new CustomError("Token not found", 401));
   }
