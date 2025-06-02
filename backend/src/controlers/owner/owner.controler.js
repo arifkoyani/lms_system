@@ -287,7 +287,7 @@ const logout = AsyncHandler(async (req, res, next) => {
     return next(new CustomError("User not found", 404));
   }
 
-  //  search user in database
+  //  search user in database for existence
   const isUserExist = await Owner.findOne({ email: user.email });
 
   if (!isUserExist) {
