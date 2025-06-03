@@ -44,7 +44,7 @@ function verifyToken(req, res, next) {
     if (!decode) {
       return next(new CustomError("Token is not valid", 401));
     }
-    req.user = decode; // {id , email , exp}
+    req.user = decode; // {id , email , exp} thisi sgood
     next();
   } catch (error) {
     // expiry token error handling
