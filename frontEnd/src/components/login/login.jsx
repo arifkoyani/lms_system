@@ -33,7 +33,7 @@ export default function Login() {
         placeholder="Email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
-        className="w-full px-4 text-red py-4 border border-gray-500 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+        className="w-full px-4 text-red py-4 border border-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
       />
       <input
         type="password"
@@ -44,7 +44,7 @@ export default function Login() {
       />
       <button
         type="submit"
-        className="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition duration-200"
+        className="w-full bg-blue-600 text-black py-2 rounded-md hover:bg-blue-700 transition duration-200"
       >
         Login
       </button>
