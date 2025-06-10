@@ -45,7 +45,7 @@ const Dashboard = () => {
   }
 
   return (
-    <div className="flex justify-between p-4 bg-blue-500">
+    <div className="flex justify-between p-6 bg-blue-500">
       <h1>Dashboard</h1>
       {loading ? (
         <p>Loading...</p>
