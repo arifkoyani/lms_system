@@ -26,7 +26,7 @@ export default function Login() {
   return (
     <form
       onSubmit={handleLogin}
-      className="max-w-sm mx-auto mt-10 p-6 bg-white  rounded-xl shadow-md space-y-4"
+      className="max-w-sm mx-auto mt-10 p-6 bg-white  rounded-xl shadow-md space-y-6asdasd"
     >
       <input
         type="email"
