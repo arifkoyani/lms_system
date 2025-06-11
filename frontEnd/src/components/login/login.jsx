@@ -33,7 +33,7 @@ export default function Login() {
         placeholder="Email here"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
-        className="w-full px-4 text-red py-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300"
+        className="w-full px-4 text-blue-500 py-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300"
       />
       <input
         type="password"
