@@ -40,7 +40,7 @@ export default function Login() {
         placeholder="Password here"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
-        className="w-full px-4 text-black py-2 border border-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+        className="w-full px-4 text-black py-2 border border-gray-400 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300"
       />
       <button
         type="submit"
