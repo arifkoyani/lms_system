@@ -30,14 +30,14 @@ export default function Login() {
     >
       <input
         type="email"
-        placeholder="Email"
+        placeholder="Email here"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
-        className="w-full px-4 text-red py-4 border border-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+        className="w-full px-4 text-red py-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
       />
       <input
         type="password"
-        placeholder="Password"
+        placeholder="Password here"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
         className="w-full px-4 text-black py-2 border border-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
