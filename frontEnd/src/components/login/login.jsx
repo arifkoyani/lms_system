@@ -17,7 +17,7 @@ export default function Login() {
     });
 
     if (res.ok) {
-      alert("Login successful");
+      alert("Login successful nice");
     } else {
       alert("Something went wrong here");
     }
@@ -26,14 +26,14 @@ export default function Login() {
   return (
     <form
       onSubmit={handleLogin}
-      className="max-w-sm mx-auto mt-10 p-6 bg-white  rounded-xl shadow-md space-y-6asdasd"
+      className="max-w-sm mx-auto mt-10 p-4 bg-white  rounded-xl shadow-md space-y-6asdasd"
     >
       <input
         type="email"
         placeholder="Email here"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
-        className="w-full px-4 text-red py-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+        className="w-full px-4 text-red py-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300"
       />
       <input
         type="password"
