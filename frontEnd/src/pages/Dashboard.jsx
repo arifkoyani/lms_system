@@ -54,7 +54,7 @@ const Dashboard = () => {
           <button onClick={handleLogout} className="btn btn-neutral">
             Logout
           </button>
-          <div className="w-[30px] uppercase  h-[40px]  rounded-full  p-2 bg-black text-white flex justify-center items-center">
+          <div className="w-[30px] uppercase  h-[50px]  rounded-full  p-2 bg-black text-white flex justify-center items-center">
             {data.fullName[0]}
             {/* <img src={data?.profile} alt="" />this is done */}
           </div>
@@ -65,3 +65,12 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
+
+// adasdjasd
+
+// as
+// d
+// asd
+// a
+// s
+// dasdasd

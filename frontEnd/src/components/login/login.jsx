@@ -17,7 +17,7 @@ export default function Login() {
     });
 
     if (res.ok) {
-      alert("Login successful nice");
+      alert("Login successful nicasdasdasdasd ae");
     } else {
       alert("Something went wrong");
     }
