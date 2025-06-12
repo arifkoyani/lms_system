@@ -41,11 +41,11 @@ export default function Login() {
         placeholder="Password here"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
-        className="w-full px-4 text-black py-4 border border-gray-400 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300"
+        className="w-full px-4 text-black py-10 border border-gray-400 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300"
       />
       <button
         type="submit"
-        className="w-full bg-blue-600 text-black py-2 rounded-md hover:bg-blue-700 transition duration-200"
+        className="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition duration-200"
       >
         Login
       </button>
