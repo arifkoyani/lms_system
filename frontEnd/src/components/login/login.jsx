@@ -35,6 +35,7 @@ export default function Login() {
         onChange={(e) => setEmail(e.target.value)}
         className="w-full px-4 text-blue-500 py-6 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
       />
+      {/* "thisi si clear" */}
       <input
         type="password"
         placeholder="Password here"
